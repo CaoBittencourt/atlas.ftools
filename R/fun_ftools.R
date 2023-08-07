@@ -287,7 +287,7 @@ fun_ftools_factor_scores <- function(
 # library(tictoc)
 #
 # # read_rds(
-# readRDS(
+# read_rds(
 #   'C:/Users/Cao/Documents/Github/atlas-research/data/efa_model_equamax_15_factors.rds'
 # ) -> efa_model
 #
