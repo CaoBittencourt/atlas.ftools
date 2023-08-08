@@ -284,7 +284,6 @@ fun_ftools_factor_scores <- function(
 # # [TEST] ------------------------------------------------------------------
 # # - Data ------------------------------------------------------------------
 # library(readr)
-# library(tictoc)
 #
 # # read_rds(
 # read_rds(
@@ -296,48 +295,21 @@ fun_ftools_factor_scores <- function(
 # ) -> df_occupations
 #
 # # - Test factor loadings ------------------------------------------------------------------
-# rm(dsds)
-#
-# tic()
-# fun_ftools_loadings(efa_model) -> dsds
-# toc()
-#
-# dsds
-#
-# class(dsds)
+# fun_ftools_loadings(efa_model)
 #
 # # - Test factor loadings match ------------------------------------------------------------------
-# rm(dsds)
-#
-# tic()
-# fun_ftools_factor_match(efa_model) -> dsds
-# toc()
-#
-# dsds
-#
-# class(dsds)
+# fun_ftools_factor_match(efa_model)
 #
 # # - Test factor scores 1 ----------------------------------------------------
-# rm(dsds)
-#
-# tic()
 # fun_ftools_factor_scores(
 #   df_data =
 #     df_occupations
 #   , efa_model =
 #     efa_model
 #   , lgc_pivot = F
-# ) -> dsds
-# toc()
-#
-# dsds
-#
-# class(dsds)
+# )
 #
 # # - Test factor scores 2 ----------------------------------------------------
-# rm(dsds)
-#
-# tic()
 # fun_ftools_factor_scores(
 #   df_data =
 #     df_occupations %>%
@@ -345,9 +317,4 @@ fun_ftools_factor_scores <- function(
 #   , efa_model =
 #     efa_model
 #   , lgc_pivot = F
-# ) -> dsds
-# toc()
-#
-# dsds
-#
-# class(dsds)
+# )
