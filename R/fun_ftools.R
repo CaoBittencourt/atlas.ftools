@@ -116,6 +116,11 @@ fun_ftools_factor_match <- function(efa_model){
       loading ==
         max(loading)
     ) %>%
+    group_by(factor) %>%
+    arrange(
+      desc(loading)
+      , .by_group = T
+    ) %>%
     ungroup() %>%
     # Manually add factors that don't have any items
     bind_rows(
