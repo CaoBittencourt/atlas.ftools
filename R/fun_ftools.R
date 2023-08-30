@@ -165,6 +165,7 @@ fun_ftools_factor_match <- function(efa_model){
 fun_ftools_factor_scores <- function(
     df_data
     , efa_model
+    , lgc_factors_only = F
     , lgc_pivot = F
 ){
 
@@ -178,6 +179,22 @@ fun_ftools_factor_scores <- function(
             rownames() %in%
             names(df_data)
         )))
+
+  stopifnot(
+    "'lgc_factors_only' must be either TRUE or FALSE." =
+      all(
+        is.logical(lgc_factors_only),
+        !is.na(lgc_factors_only)
+      )
+  )
+
+  stopifnot(
+    "'lgc_pivot' must be either TRUE or FALSE." =
+      all(
+        is.logical(lgc_pivot),
+        !is.na(lgc_pivot)
+      )
+  )
 
   # Data wrangling
   fun_ftools_factor_match(
@@ -237,18 +254,22 @@ fun_ftools_factor_scores <- function(
 
   }
 
-  # Add id columns to data
-  df_data %>%
-    bind_cols(
-      df_factor_scores
-    ) %>%
-    relocate(
-      !starts_with('factor')
-      , str_sort(
-        names(.)
-        , numeric = T
-      )
-    ) -> df_factor_scores
+  if(!lgc_factors_only){
+
+    # Add id columns to data
+    df_data %>%
+      bind_cols(
+        df_factor_scores
+      ) %>%
+      relocate(
+        !starts_with('factor')
+        , str_sort(
+          names(.)
+          , numeric = T
+        )
+      ) -> df_factor_scores
+
+  }
 
   # Add df_factor_scores class
   df_factor_scores %>%
